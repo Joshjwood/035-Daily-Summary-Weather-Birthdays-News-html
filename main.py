@@ -104,9 +104,8 @@ def get_calendar_events():
             except:
                 start = start[:-5]
                 start = datetime.datetime.strptime(start, "%Y-%m-%d")
-            print(start)
 
-            pretty_time = start.strftime("%I:%M")
+            #pretty_time = start.strftime("%I:%M") -- unused
             pretty_date = start.strftime("%a %B %d")
 
             event_text_block += f"<strong>{pretty_date}</strong> - {event['summary']}<br><br>"
