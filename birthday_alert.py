@@ -1,5 +1,7 @@
 import pandas
 import datetime as dt
+import os
+
 def birthday_alert():
     now = dt.datetime.now()
     day = now.day
@@ -8,7 +10,7 @@ def birthday_alert():
     monthname = now.strftime("%B")
 
     its_your_birthday = ""
-    with open("birthdays.csv") as birthday_data:
+    with open("/home/slaveone/PycharmProjects/035-Daily-Summary-Weather-Birthdays-News-html/birthdays.csv") as birthday_data:
         birthdays = pandas.read_csv(birthday_data)
         birthdays = birthdays.to_dict()
         its_your_birthday = "<br>"
