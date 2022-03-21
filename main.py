@@ -98,13 +98,14 @@ def get_calendar_events():
 
         except:
             start = event['start']['dateTime']
-            print("This is the dateTime variable: " + start)
+            start = start[:-10]
             try:
-                start = start[:-10]
+                start = datetime.datetime.strptime(start, "%Y-%m-%d")
             except:
-                start = start[:-15]
+                start = start[:-5]
+                start = datetime.datetime.strptime(start, "%Y-%m-%d")
             print(start)
-            start = datetime.datetime.strptime(start, "%Y-%m-%d")
+
             pretty_time = start.strftime("%I:%M")
             pretty_date = start.strftime("%a %B %d")
 
