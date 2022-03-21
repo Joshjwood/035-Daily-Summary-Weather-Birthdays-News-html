@@ -86,6 +86,8 @@ def get_calendar_events():
     if not events:
         event_text_block += 'No upcoming events found.'
     for event in events:
+        # Google's json response can be slightly different per event
+        # At some point I should figure out why, for now, exceptions will patch it
         try:
             start = event['start']['date']
             start = datetime.datetime.strptime(start, "%Y-%m-%d")
