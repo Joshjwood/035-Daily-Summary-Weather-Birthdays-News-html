@@ -10,12 +10,14 @@ NEWS_ENDPOINT = NEWS_ENDPOINT
 #takes news data from the functions below and formats it with some HTML into a news block
 def news_block(news_data, source):
     report = source
+    #print(news_data)
     for i in range(0, 3):
         link_text = news_data["articles"][i]["url"]
         image_ref = news_data["articles"][i]["urlToImage"]
         report += f'<a href="{link_text}"><img src="{image_ref}" alt="ALT TEXT"></a><br>'
         report += "<strong>" + news_data["articles"][i]["title"] + "</strong><br>"
-        report += news_data["articles"][i]["description"] + "<br><br><br>"
+        report += news_data["articles"][i]["description"]
+        report += "<br><br><br>"
     return report
 
 def bbc_today():
@@ -70,6 +72,8 @@ def yesterday_top_3():
     news_data = news_response.json()
     ###########################
     source = f'<strong>Top 3 stories from Yesterday</strong>:<br>'
-    report = news_block(news_data, source)
-
-    return report
+    try:
+        report = news_block(news_data, source)
+        return report
+    except:
+        return "Failed to recall yesterdays news"
